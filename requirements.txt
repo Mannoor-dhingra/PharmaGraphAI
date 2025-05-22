@@ -1,0 +1,19 @@
+# requirements.txt
+# Core dependencies
+neo4j
+scispacy
+spacy
+pandas
+scikit-learn
+networkx
+
+# FireworksAI LLaMA model (API client)
+fireworks-ai
+
+# Streamlit for frontend
+streamlit
+
+# Optional
+matplotlib
+seaborn
+jupyter
