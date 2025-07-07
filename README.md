@@ -43,9 +43,9 @@ cd PharmaGraphAI
 pip install -r requirements.txt
 ```
 
-3. Set up Neo4j (ensure it's running on bolt://localhost:7687) and update credentials in kg_builder.py if needed.
+3. Set up Neo4j (ensure it's running on bolt://localhost:7687) and update credentials in kg_builder.py.
 
-4. Get access to FireworksAI and set your API key in environment variables or within .env file.
+4. Get access to FireworksAI and set your API key in environment variables.
 
 ## 🧠 Technologies Used
 
