@@ -34,7 +34,7 @@ PharmaGraphAI/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/PharmaGraphAI.git
+git clone https://github.com/Mannoor-dhingra/PharmaGraphAI.git
 cd PharmaGraphAI
 ```
 
