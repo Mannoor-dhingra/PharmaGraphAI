@@ -2,7 +2,6 @@
 Module to extract entities and relations from biomedical text using SciSpacy.
 """
 
-import scispacy
 import spacy
 import json
 

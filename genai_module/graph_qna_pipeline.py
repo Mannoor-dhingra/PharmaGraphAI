@@ -2,33 +2,32 @@
 Uses FireworksAI's LLaMA model to answer biomedical questions using the Neo4j knowledge graph.
 """
 
-from langchain.llms import Fireworks
+from langchain_fireworks import ChatFireworks
 from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
-from langchain.graphs.neo4j_graph import Neo4jGraph
+from langchain_core.output_parsers import StrOutputParser
+from langchain_neo4j import Neo4jGraph
 
 # Setup Neo4j Graph
 graph = Neo4jGraph(
     url="bolt://localhost:7687",
     username="neo4j",
-    password="your_password"
+    password="password"
 )
 
-# LLM setup
-llm = Fireworks(model="accounts/fireworks/models/llama-v2-13b-chat")
+llm= ChatFireworks(model="accounts/fireworks/models/llama-v3p1-8b-instruct", temperature=0)
 
-prompt = PromptTemplate(
-    input_variables=["context", "question"],
-    template="""
+prompt_template="""
     Context: {context}
     Question: {question}
     Answer:
     """
-)
 
-chain = LLMChain(llm=llm, prompt=prompt)
+
+prompt=PromptTemplate.from_template(prompt_template)
+
+chain = prompt | llm | StrOutputParser()
 
 def answer_query_with_graph(question):
     context = graph.query("MATCH (n)-[r]->(m) RETURN n.name, type(r), m.name LIMIT 10")
     flat_context = "; ".join([f"{n} -[{r}]-> {m}" for n, r, m in context])
-    return chain.run({"context": flat_context, "question": question})
+    return chain.invoke({"context": flat_context, "question": question})

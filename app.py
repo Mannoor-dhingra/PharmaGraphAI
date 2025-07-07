@@ -16,3 +16,7 @@ def launch_ui():
             answer = answer_query_with_graph(question)
         st.success("Answer:")
         st.write(answer)
+        
+
+if __name__ == "__main__":
+    launch_ui()

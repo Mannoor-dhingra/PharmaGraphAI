@@ -7,7 +7,7 @@ import json
 
 uri = "bolt://localhost:7687"
 username = "neo4j"
-password = "your_password"
+password = "password"
 
 driver = GraphDatabase.driver(uri, auth=(username, password))
 
